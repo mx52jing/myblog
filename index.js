@@ -52,6 +52,13 @@ app.locals.blog = {
 // 路由
 routes(app);
 
+// error page
+app.use(function (err, req, res, next) {
+  res.render('error', {
+    error: err
+  });
+});
+
 // 监听端口，启动程序
 app.listen(config.port, function () {
   console.log(`${pkg.name} listening on port ${config.port}`);
